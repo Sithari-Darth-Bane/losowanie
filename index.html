@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Losowanie</title>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <script>
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var array = JSON.parse(this.responseText).places;
+                alert(shuffle(array)[0]);
+            }
+        };
+        xhttp.open("GET", "https://pastebin.com/raw/k95dJEpC", true);
+        xhttp.send();
+        function shuffle(arra1) {
+            var ctr = arra1.length, temp, index;
+            while (ctr > 0) {
+                index = Math.floor(Math.random() * ctr);
+                ctr--;
+                temp = arra1[ctr];
+                arra1[ctr] = arra1[index];
+                arra1[index] = temp;
+            }
+            return arra1;
+        }
+    </script>
+</body>
+
+</html>
